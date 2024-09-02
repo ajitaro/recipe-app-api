@@ -31,3 +31,6 @@ docker compose run --rm app sh -c "python manage.py wait_for_db && python manage
 
 # clear database in volume
 docker volume rm recipe-app-api_dev-db-data
+
+# create superuser
+docker compose run --rm app sh -c "python manage.py createsuperuser"
