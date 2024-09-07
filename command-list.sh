@@ -20,7 +20,7 @@ docker compose build
 # Clean
 docker compose down
 
-# Create new django app
+# Create new django app, core
 docker compose run --rm app sh -c "python manage.py startapp core"
 
 # Make migrations
@@ -34,3 +34,6 @@ docker volume rm recipe-app-api_dev-db-data
 
 # create superuser
 docker compose run --rm app sh -c "python manage.py createsuperuser"
+
+# Create new django app, user
+docker compose run --rm app sh -c "python manage.py startapp user"
