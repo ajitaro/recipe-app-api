@@ -37,3 +37,6 @@ docker compose run --rm app sh -c "python manage.py createsuperuser"
 
 # Create new django app, user
 docker compose run --rm app sh -c "python manage.py startapp user"
+
+# Create new django app, recipe
+docker compose run --rm app sh -c "python manage.py startapp recipe"
