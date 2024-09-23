@@ -1,3 +1,4 @@
+# docker compose run --rm NAMA_CONTAINER sh -c "flake8"
 # Run linting
 docker compose run --rm app sh -c "flake8"
 
