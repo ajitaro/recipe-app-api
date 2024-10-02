@@ -320,7 +320,7 @@ class PrivateRecipeApiTests(TestCase):
             'title': 'Vietnamese Soup',
             'time_minutes': 25,
             'price': '2.55',
-            'ingredients': [{'name': 'Lemon'}, {'name': 'Fish Sauce'}]
+            'ingredients': [{'name': 'Lemon'}, {'name': 'Fish Sauce'}],
         }
         res = self.client.post(RECIPES_URL, payload, format='json')
 
