@@ -62,19 +62,23 @@ class RecipeSerializer(serializers.ModelSerializer):
             recipe.ingredients.add(ingredient_obj)
 
     def create(self, validated_data):
-        """Create a recipe."""
+        """Create a recipe with tags and ingredients."""
         tags = validated_data.pop('tags', [])
         ingredients = validated_data.pop('ingredients', [])
         recipe = Recipe.objects.create(**validated_data)
+
+        # Handle many-to-many relationships
         self._get_or_create_tags(tags, recipe)
         self._get_or_create_ingredients(ingredients, recipe)
 
         return recipe
 
     def update(self, instance, validated_data):
-        """Update recipe."""
+        """Update recipe with new tags and ingredients."""
         tags = validated_data.pop('tags', None)
         ingredients = validated_data.pop('ingredients', None)
+
+        # Clear and update many-to-many fields
         if tags is not None:
             instance.tags.clear()
             self._get_or_create_tags(tags, instance)
@@ -82,6 +86,7 @@ class RecipeSerializer(serializers.ModelSerializer):
             instance.ingredients.clear()
             self._get_or_create_ingredients(ingredients, instance)
 
+        # Update other fields
         for attr, value in validated_data.items():
             setattr(instance, attr, value)
 
