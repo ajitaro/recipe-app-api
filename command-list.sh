@@ -41,3 +41,6 @@ docker compose run --rm app sh -c "python manage.py startapp user"
 
 # Create new django app, recipe
 docker compose run --rm app sh -c "python manage.py startapp recipe"
+
+# Run docker for production
+docker compose -f docker-compose-deploy.yml up
